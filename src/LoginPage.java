@@ -47,7 +47,7 @@ public class LoginPage implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(420, 420);
         frame.setLayout(null);
-
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
@@ -70,8 +70,8 @@ public class LoginPage implements ActionListener {
                 if (loginInfo.get(userID).equals(password)) {
                     messageLabel.setForeground(Color.green);
                     messageLabel.setText("Login successful!");
-
-                    WelcomePage welcomePage = new WelcomePage();
+                    frame.dispose();
+                    WelcomePage welcomePage = new WelcomePage(userID);
                 } else {
                     messageLabel.setForeground(Color.red);
                     messageLabel.setText("Wrong Password!");

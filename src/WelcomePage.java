@@ -4,14 +4,21 @@ import java.awt.*;
 public class WelcomePage {
 
     JFrame frame = new JFrame();
-    JLabel welcomeLabel = new JLabel("You have logged in successfully");
+    JLabel welcomeUserLabel = new JLabel("Hello!");
+    JLabel welcomeLabel = new JLabel("You have logged in successfully!");
 
-    WelcomePage() {
+    WelcomePage(String userID) {
 
-        welcomeLabel.setBounds(30, 150, 350, 35);
+        welcomeUserLabel.setBounds(30, 100, 350, 35);
+        welcomeUserLabel.setFont(new Font("Arial", Font.PLAIN, 25));
+        welcomeUserLabel.setForeground(Color.black);
+        welcomeUserLabel.setText("Hello " + userID + "!");
+
+        welcomeLabel.setBounds(30, 200, 350, 35);
         welcomeLabel.setFont(new Font("Arial", Font.PLAIN, 25));
         welcomeLabel.setForeground(Color.green);
 
+        frame.add(welcomeUserLabel);
         frame.add(welcomeLabel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(420, 420);
