@@ -2,9 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.HashMap;
 
-public class LoginPage implements ActionListener {
+public class LoginPage implements ActionListener, KeyListener {
 
     JFrame frame = new JFrame("Login");
     JButton loginButton = new JButton("Login");
@@ -36,6 +38,8 @@ public class LoginPage implements ActionListener {
         resetButton.setBounds(225, 200, 100, 25);
         resetButton.setFocusable(false);
         resetButton.addActionListener(this);
+        userIDField.addKeyListener(this);
+        userPasswordField.addKeyListener(this);
 
         frame.add(userIDLabel);
         frame.add(userPasswordLabel);
@@ -81,5 +85,24 @@ public class LoginPage implements ActionListener {
                 messageLabel.setText("UserID not found!");
             }
         }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            loginButton.doClick();
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
     }
 }
