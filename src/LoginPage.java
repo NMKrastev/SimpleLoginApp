@@ -24,7 +24,7 @@ public class LoginPage implements ActionListener {
         userPasswordLabel.setBounds(50, 150, 75, 25);
 
         messageLabel.setBounds(125, 250, 250, 35);
-        messageLabel.setFont(new Font("Arial", Font.PLAIN, 25));
+        messageLabel.setFont(new Font("Arial", Font.PLAIN, 20));
 
         userIDField.setBounds(125, 100, 200, 25);
         userPasswordField.setBounds(125, 150, 200, 25);
@@ -45,7 +45,7 @@ public class LoginPage implements ActionListener {
         frame.add(loginButton);
         frame.add(resetButton);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(420,420);
+        frame.setSize(420, 420);
         frame.setLayout(null);
 
         frame.setVisible(true);
@@ -57,6 +57,29 @@ public class LoginPage implements ActionListener {
         if (e.getSource() == resetButton) {
             userIDField.setText("");
             userPasswordField.setText("");
+            messageLabel.setText("");
+        }
+
+        if (e.getSource() == loginButton) {
+
+            String userID = userIDField.getText();
+            String password = String.valueOf(userPasswordField.getPassword());
+
+            if (loginInfo.containsKey(userID)) {
+
+                if (loginInfo.get(userID).equals(password)) {
+                    messageLabel.setForeground(Color.green);
+                    messageLabel.setText("Login successful!");
+
+                    WelcomePage welcomePage = new WelcomePage();
+                } else {
+                    messageLabel.setForeground(Color.red);
+                    messageLabel.setText("Wrong Password!");
+                }
+            } else {
+                messageLabel.setForeground(Color.red);
+                messageLabel.setText("UserID not found!");
+            }
         }
     }
 }
